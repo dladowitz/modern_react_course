@@ -10,31 +10,28 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: "empty" };
+    this.state = { term: "" };
   }
+
 
   // Every class based component must have a render function.
   // This is what will automatically be called when imported in to other components.
   render() {
     // must return JSX or will cause error
     return (
-
-      // <br>
-      <div>
-        <div>Term: {this.state.term}</div>
-        <br />
+      <div className="search-bar">
         <input
           value={this.state.term}
-          onChange={event => this.setState({ term: event.target.value })}
+          onChange={event => this.onInputChange(event.target.value)}
         />
       </div>
     );
   }
 
-  // onInputChange(event) {
-  //   setState({ term: event.target.value })
-  //   console.log(this.state.term)
-  // }
+  onInputChange(term){
+    this.setState({term})
+    this.props.onSearchTermChange(term)
+  }
 }
 
 // Sets up the default to export the SearchBar constant or class.
