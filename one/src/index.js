@@ -28,7 +28,6 @@ class App extends Component {
         selectedVideo: videos[0]
       });
     });
-    // console.log(this.state.videos[0])
   }
 
   render(){
@@ -36,11 +35,17 @@ class App extends Component {
       <div>
         <SearchBar />
         <VideoDetail video={this.state.selectedVideo} />
-        <VideoList videos={this.state.videos} />
+        <VideoList
+          videos={this.state.videos}
+          onVideoSelect={selectedVideo => this.setState({selectedVideo}) }  />
       </div>
     );
   }
 }
+
+// function(selectedVideo){
+//   this.setState(selectedVideo: selectedVideo)
+// }
 // create an instance like this:
 // <App> </App>
 // or self closing
